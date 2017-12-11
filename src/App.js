@@ -32,12 +32,10 @@ class App extends Component {
       this.setState({
         people: res.data.results
       })
-      console.log(this.state.people);
     })
 
     let otherPromise = axios.get('/api/people')
     otherPromise.then(res => {
-      console.log(res)
       savedPeople: res.data.results
     })
     console.log(this.state.savedPeople);

@@ -23,7 +23,6 @@ class Survey extends Component {
   }
   
   render() {
-    console.log(this.state.savedPeople);
     
     const mapPeople = this.state.savedPeople.map((e, i) => {
       return <div className="savedPeople" key={i}>{e}</div>

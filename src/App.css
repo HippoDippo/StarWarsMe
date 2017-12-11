@@ -84,15 +84,18 @@ body {
 
 .character {
   color: #fff;
+  font-size: 22px;
 }
 
 .personInfo {
   color: #fff;
   margin: 14px;
+  font-size: 22px
 }
 
 .savedPeople {
   color: #fff;
+  margin: 7px;
 }
 
 .saveCharacter {
