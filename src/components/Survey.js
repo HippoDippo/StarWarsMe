@@ -13,7 +13,6 @@ class Survey extends Component {
 
 
   savePeople() {
-    console.log(this.props.character)
     let promise = axios.post('/api/people', {name: this.props.character})
     promise.then((res) => {
       this.setState({
@@ -21,9 +20,17 @@ class Survey extends Component {
       })
     })
   }
-  
+
+  deletePeople() {
+    axios.delete('/api/people', {name: this.props.character}).then((res) => {
+      this.setState({
+        savedPeople: [...res.data]
+      })
+    })
+  }
+
   render() {
-    
+
     const mapPeople = this.state.savedPeople.map((e, i) => {
       return <div className="savedPeople" key={i}>{e}</div>
     })
@@ -43,6 +50,7 @@ class Survey extends Component {
         onChange={(e) => this.props.handleUserInput(e)}>
         </input>
         <button className="button" onClick={this.props.updateAnswers}>Submit</button>
+        <button className="deleteCharacter" onClick={()=> this.deletePeople()}>Delete Character</button>
         {mapPeople}
       </div>
     )

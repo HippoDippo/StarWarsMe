@@ -14,7 +14,9 @@ app.get('/api/people', (req, res) => {
   res.send(savedPeople);
 })
 
-// app.put('/api/people/', (req, res) => {})
+app.put('/api/people/', (req, res) => {
+  
+})
 
 app.post('/api/people/', (req, res) => {
   savedPeople.push(req.body.name);
@@ -23,7 +25,7 @@ app.post('/api/people/', (req, res) => {
 
 
 app.delete('/api/people/', (req, res) => {
-  savedPeople.splice(req.body.id, 1);
+  savedPeople.splice(req.body.name, 1);
   res.status(200).send(savedPeople);
 })
 
