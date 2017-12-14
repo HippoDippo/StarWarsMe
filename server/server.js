@@ -14,8 +14,13 @@ app.get('/api/people', (req, res) => {
   res.send(savedPeople);
 })
 
-app.put('/api/people/', (req, res) => {
-  
+app.put('/api/people/:name', (req, res) => {
+  var name = req.params.name;
+  var newName = `You are: ${req.body.name}`;
+  var index = savedPeople.indexOf(name);
+
+  savedPeople[index] = newName;
+  res.status(200).send(savedPeople);
 })
 
 app.post('/api/people/', (req, res) => {

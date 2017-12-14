@@ -7,7 +7,8 @@ class Survey extends Component {
     super()
 
     this.state = {
-      savedPeople: []
+      savedPeople: [],
+      peopleInput: ''
     }
   }
 
@@ -26,6 +27,22 @@ class Survey extends Component {
       this.setState({
         savedPeople: [...res.data]
       })
+    })
+  }
+
+  updatePeople() {
+    let promise = axios.put(`api/people/${this.props.character}`, {name: this.state.peopleInput});
+    promise.then((res) => {
+      this.setState({
+        savedPeople: [...res.data],
+        peopleInput: ''
+      })
+    })
+  }
+
+  handlePeopleInput(event) {
+    this.setState({
+      peopleInput: event.target.value
     })
   }
 
@@ -51,6 +68,8 @@ class Survey extends Component {
         </input>
         <button className="button" onClick={this.props.updateAnswers}>Submit</button>
         <button className="deleteCharacter" onClick={()=> this.deletePeople()}>Delete Character</button>
+        <input className="new-input" placeholder="New Name here" onChange={(e)=> this.handlePeopleInput(e)}></input>
+        <button className="updatePeople" onClick={()=> this.updatePeople()}>Update Character</button>
         {mapPeople}
       </div>
     )
