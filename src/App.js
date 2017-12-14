@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import './reset.css';
 import './App.css';
+import luke from './img/characters/luke.png';
+import leigh from './img/characters/leigh.png';
+import obiwan from './img/characters/obiwan.png';
+import darthvader from './img/characters/darthvader.png';
 import Header from './components/Header';
 import Survey from './components/Survey';
 import axios from 'axios';
@@ -18,7 +22,8 @@ class App extends Component {
       userInput: '',
       count: 0, 
       total: -1,
-      character: ''
+      character: '',
+      characterImg: ''
     }
   
     this.handleUserInput = this.handleUserInput.bind(this)
@@ -58,24 +63,28 @@ class App extends Component {
       this.setState({
         character: `You are: ${this.state.people[3].name}`,  // Replace with axios json data.
         personInfo: `Birth Year: ${this.state.people[3]['birth_year']}\nHeight: ${this.state.people[3]['height']}`,
+        characterImg: darthvader,
         total: total
       })
     } else if (total >= 6) {
       this.setState({
         character: `You are: ${this.state.people[4].name}`,
         personInfo: `Birth Year: ${this.state.people[4]['birth_year']}\nHeight: ${this.state.people[4]['height']}`,
+        characterImg: leigh,
         total: total
       })
     } else if (total >= 3) {
       this.setState({
         character: `You are: ${this.state.people[9].name}`,
         personInfo: `Birth Year: ${this.state.people[9]['birth_year']}\nHeight: ${this.state.people[9]['height']}`,
+        characterImg: obiwan,
         total: total
       })
     } else if (total >= 0) {
       this.setState({
         character: `You are: ${this.state.people[0].name}`,
         personInfo: `Birth Year: ${this.state.people[0]['birth_year']}\nHeight: ${this.state.people[0]['height']}`,
+        characterImg: luke,
         total: total
       })
     } else {
@@ -118,7 +127,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header/>
-        <Survey questions={this.state.questions} answerChoices={this.state.answerChoices} character={this.state.character} personInfo={this.state.personInfo} count={this.state.count} userInput={this.state.userInput} handleUserInput={this.handleUserInput} updateAnswers={this.updateAnswers}/>
+        <Survey characterImg={this.state.characterImg} questions={this.state.questions} answerChoices={this.state.answerChoices} character={this.state.character} personInfo={this.state.personInfo} count={this.state.count} userInput={this.state.userInput} handleUserInput={this.handleUserInput} updateAnswers={this.updateAnswers}/>
       </div>
     );
   }

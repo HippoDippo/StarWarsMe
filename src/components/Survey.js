@@ -56,6 +56,7 @@ class Survey extends Component {
     return (
       <div>
         <Questions 
+        characterImg={this.props.characterImg}
         questions={this.props.questions} 
         answerChoices={this.props.answerChoices} 
         character={this.props.character} 
