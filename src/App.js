@@ -101,8 +101,6 @@ class App extends Component {
         userInput: ''
       })
       
-      // Calculate the answers and display character to user.
-      
       this.calculateScore() // Gets Total and displays character.
       
     } else {

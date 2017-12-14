@@ -25,7 +25,8 @@ class Survey extends Component {
   deletePeople() {
     axios.delete('/api/people', {name: this.props.character}).then((res) => {
       this.setState({
-        savedPeople: [...res.data]
+        savedPeople: [...res.data],
+        peopleInput: ''
       })
     })
   }
@@ -67,9 +68,11 @@ class Survey extends Component {
         onChange={(e) => this.props.handleUserInput(e)}>
         </input>
         <button className="button" onClick={this.props.updateAnswers}>Submit</button>
-        <button className="deleteCharacter" onClick={()=> this.deletePeople()}>Delete Character</button>
-        <input className="new-input" placeholder="New Name here" onChange={(e)=> this.handlePeopleInput(e)}></input>
-        <button className="updatePeople" onClick={()=> this.updatePeople()}>Update Character</button>
+        <br /><div className="modifyCharacters">
+          <button className="deleteCharacter" onClick={()=> this.deletePeople()}>Delete Character</button>
+          <input className="new-input" placeholder="New name goes here" onChange={(e)=> this.handlePeopleInput(e)}></input>
+          <button className="updatePeople" onClick={()=> this.updatePeople()}>Update Character</button>
+          </div>
         {mapPeople}
       </div>
     )
